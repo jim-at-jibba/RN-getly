@@ -6,5 +6,10 @@ export default create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+
+  listWrapper: {
+    display: 'flex',
+    flex: 1,
   }
 });
