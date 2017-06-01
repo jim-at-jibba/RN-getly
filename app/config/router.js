@@ -9,7 +9,7 @@ export const NavStack = StackNavigator(
     HomeScreen: {
       screen: HomeScreen,
       navigationOptions: {
-        title: 'Title'
+        title: 'Get.ly'
       }
     }
   },
