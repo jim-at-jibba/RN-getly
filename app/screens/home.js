@@ -1,0 +1,17 @@
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+
+import Container from '../components/container';
+
+class HomeScreen extends Component {
+  
+  render() {
+    return (
+     <Container>
+       <Text>Home</Text>
+     </Container>    
+    );
+  }
+}
+
+export default HomeScreen;
