@@ -30,17 +30,18 @@ class HomeScreen extends Component {
     this.editRequest = this.editRequest.bind(this);
   }
 
-  deleteRequest(uuid) {
-    if(config.DEV) console.log(`Deleting request with id: ${uuid}`);
+  deleteRequest(id) {
+    if(config.DEV) console.log(`Deleting request with id: ${id}`);
   }
 
-  editRequest(uuid) {
-    if(config.DEV) console.log(`Editing request wuth id: ${uuid}`);
+  editRequest(id) {
+    if(config.DEV) console.log(`Editing request with id: ${id}`);
   }
 
   renderRow(rowData) {
     return (
       <RequestItem
+        key={rowData.id}
         data={rowData}
         delete={(uuid) =>  this.deleteRequest(uuid) }
         edit={(uuid) => this.editRequest(uuid)}
