@@ -1,8 +1,8 @@
 export default {
-  primary: '#3B5998',
-  background: '#f7f7f7',
-  defaultText: '#181818',
+  primary: '#55acaa',
+  background: '#e7e5d7',
+  defaultText: '#404041',
   iconSubtle: '#a2a2a2',
   textSubtle: '#848484',
-  red: '#F44336',
+  orange: '#f05f3b',
 };
