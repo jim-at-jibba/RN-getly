@@ -5,4 +5,8 @@ export default {
   iconSubtle: '#a2a2a2',
   textSubtle: '#848484',
   orange: '#f05f3b',
+  get: '#FF19CB',
+  post: '#00FFF9',
+  delete: '#CCAD14',
+  put: '#B29609'
 };
