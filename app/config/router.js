@@ -1,6 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
 import HomeScreen from '../screens/home';
+import SettingsScreen from '../screens/settings';
 
 import colours from '../config/colours';
 
@@ -10,6 +11,12 @@ export const NavStack = StackNavigator(
       screen: HomeScreen,
       navigationOptions: {
         title: 'Get.ly'
+      }
+    },
+    SettingsScreen: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        title: 'Settings'
       }
     }
   },
