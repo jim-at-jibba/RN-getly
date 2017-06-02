@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import NavStack from './config/router';
+import Root from './config/router';
 
 class App extends Component {
   render() {
-    return <NavStack />;
+    return <Root />;
   }
 }
 
