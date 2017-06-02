@@ -3,10 +3,18 @@ import { View } from 'react-native';
 
 import styles from './styles';
 
-const Container = ({ children, passProps, list }) => {
+const Container = ({ children, passProps, list, form }) => {
   if (list === true) {
     return (
       <View style={styles.listWrapper} {...passProps}>
+        {children}
+      </View>
+    );
+  }
+
+  if(form === true) {
+    return (
+      <View style={styles.formWrapper} {...passProps}>
         {children}
       </View>
     );

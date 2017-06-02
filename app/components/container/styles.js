@@ -11,5 +11,11 @@ export default create({
   listWrapper: {
     display: 'flex',
     flex: 1,
+  },
+
+  formWrapper: {
+    display: 'flex',
+    flex: 1,
+    margin: 20
   }
 });
