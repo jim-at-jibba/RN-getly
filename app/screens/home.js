@@ -151,7 +151,7 @@ class HomeScreen extends Component {
         <ModalContainer isVisible={this.state.isModalVisible} >
           {this.renderModalContent()}
         </ModalContainer>
-        <AddFab />
+        <AddFab navigate={this.props.navigation}/>
       </Container>
     );
   }
