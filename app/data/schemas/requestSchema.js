@@ -7,7 +7,8 @@ Request.schema = {
     id: { type: 'string', indexed: true },
     title: 'string',
     url: 'string',
-    method: 'string'
+    method: 'string',
+    viewResponse: 'bool'
   }
 };
 
