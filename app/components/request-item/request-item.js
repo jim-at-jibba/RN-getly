@@ -49,12 +49,12 @@ class RequestItem extends Component {
 
   render() {
     console.log(this.props.data)
-    const { title, method, url } = this.props.data;
+    const { title, method, url, viewResponse } = this.props.data;
     return (
       <View>
         <View style={styles.itemStyle}>
           <TouchableWithoutFeedback
-            onPress={() => this.props.sendRequest(method, url)}
+            onPress={() => this.props.sendRequest(method, url, viewResponse)}
             onLongPress={() => this.toggleMenu()}
           >
             <View style={styles.textWrapper}>
