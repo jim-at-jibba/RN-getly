@@ -126,7 +126,6 @@ class HomeScreen extends Component {
   }
 
   render() {
-    // const htmlContent = `<p>${JSON.stringify(this.state.response.data, null, 4)}</p>`;
     if (this.state.requests.length === 0) {
       return (
         <Container>
