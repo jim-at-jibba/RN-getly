@@ -8,7 +8,7 @@ Request.schema = {
     title: 'string',
     url: 'string',
     method: 'string',
-    viewResponse: 'bool'
+    showResponse: 'bool'
   }
 };
 

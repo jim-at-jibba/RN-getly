@@ -9,6 +9,8 @@ import RadioForm, {
 
 import Container from '../components/container';
 import colours from '../config/colours';
+import RequestService from '../data/services/requestService';
+import RequestModel from '../data/models/requestModel';
 
 class NewRequestScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -32,32 +34,47 @@ class NewRequestScreen extends Component {
       request: {
         title: '',
         url: '',
-        method: '',
-        showReponse: true
+        method: 'GET',
+        showResponse: true
       },
-      methodIndex: 0
+      methodIndex: 0,
+      errors: []
     };
 
     this.methodSelected = this.methodSelected.bind(this);
     this.saveRequest = this.saveRequest.bind(this);
   }
 
-  methodSelected(value, index) {
+  methodSelected(method, index) {
     this.setState({
       methodIndex: index,
-      request: { ...this.state.request, value }
+      request: { ...this.state.request, method }
     });
   }
 
   saveRequest() {
-    const {title, url, method } = this.state.request;
+    const { title, url, method } = this.state.request;
+    console.log('Clicked', title, url, method);
+    let errors = [];
 
-    if(title === '' ) {
-      let errors = [];
-      errors.push[{title: 'You must provide a title'}]
-      this.setState = {
-        errors: []
-      }
+    if (title === '') {
+      console.log('Empty Title');
+      errors.push({ title: 'You must provide a title' });
+    }
+
+    if (url === '') {
+      console.log('Empty url');
+      errors.push({ url: 'You must provide a url' });
+    }
+
+    if (errors.length === 0) {
+      console.log('Saving', this.state.request);
+      const {title, url, method, showResponse } = this.state.request;
+      RequestService.save(new RequestModel(title, url, method, showResponse));
+      this.props.navigation.navigate('HomeScreen');
+    } else {
+      this.setState({ errors });
+      return;
     }
   }
 
@@ -66,10 +83,26 @@ class NewRequestScreen extends Component {
     return (
       <Container form>
         <FormLabel>Title</FormLabel>
-        <FormInput />
+        <FormInput 
+          value={this.state.request.title}
+          onChangeText={title => {
+            this.setState({
+              request: { ...this.state.request, title }
+            });
+          }}
+        />
 
         <FormLabel>URL</FormLabel>
-        <FormInput />
+        <FormInput
+          autoCapitalize='none'
+          autpCorrect='false'
+          value={this.state.request.url}
+          onChangeText={url => {
+            this.setState({
+              request: { ...this.state.request, url }
+            });
+          }}
+        />
 
         <View>
           <FormLabel>Method</FormLabel>
@@ -114,11 +147,9 @@ class NewRequestScreen extends Component {
             checkedColor={colours.primary}
             onPress={() => {
               let showResponse = !this.state.request.showResponse;
-              console.log('SHOW', showResponse);
               this.setState({
                 request: { ...this.state.request, showResponse }
               });
-              console.log('Clicked Stae', this.state.request);
             }}
           />
         </View>
@@ -127,7 +158,7 @@ class NewRequestScreen extends Component {
           iconRight
           backgroundColor={colours.primary}
           buttonStyle={styles.buttonStyle}
-          icon={{ name: 'insert-link',  }}
+          icon={{ name: 'insert-link' }}
           title="Save"
           onPress={() => this.saveRequest()}
         />
