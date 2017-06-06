@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "hoist-non-react-statics": "^1.2.0",
     "lodash": "^4.17.4",
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.2",
     "react-native-collapsible": "^0.8.0",
+    "react-native-dropdownalert": "^2.9.0",
     "react-native-elements": "^0.12.2",
     "react-native-list-popover": "^1.0.5",
     "react-native-modal": "^2.4.0",

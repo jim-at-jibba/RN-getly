@@ -48,7 +48,6 @@ class RequestItem extends Component {
   }
 
   render() {
-    console.log(this.props.data)
     const { title, method, url, showResponse } = this.props.data;
     return (
       <View>

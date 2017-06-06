@@ -3,11 +3,13 @@ import { Alert, View } from 'react-native';
 import { List, Button, Text } from 'react-native-elements';
 import { ListView } from 'realm/react-native';
 import axios from 'axios';
+import DropdownAlert from 'react-native-dropdownalert';
 
 import Container from '../components/container';
 import SettingsButton from '../components/settings-button';
 import AddFab from '../components/add-fab';
 import ModalContainer from '../components/modal';
+import { connectAlert } from '../components/alert';
 
 import RequestItem from '../components/request-item';
 import RequestService from '../data/services/requestService';
@@ -49,6 +51,11 @@ class HomeScreen extends Component {
     this.sendRequest = this.sendRequest.bind(this);
     this.renderRow = this.renderRow.bind(this);
     this.renderModalContent = this.renderModalContent.bind(this);
+    this.handleAlert = this.handleAlert.bind(this);
+  }
+
+  handleAlert() {
+    this.props.alertWithType('info', 'Hey!', 'Alerting peopleis useful.');
   }
 
   sendRequest(method, url, showResponse) {
@@ -65,7 +72,11 @@ class HomeScreen extends Component {
           this.setState({ isModalVisible: true });
         }
       })
-      .catch(e => console.log('Error:', e));
+      .catch(e => {
+        if (e != null) {
+          this.props.alertWithType('error', 'Network Error!', JSON.stringify(e.response.status, null, 2));
+        }
+      });
   }
 
   deleteRequest(id) {
@@ -147,13 +158,13 @@ class HomeScreen extends Component {
           {this.renderRow()}
 
         </List>
-        <ModalContainer isVisible={this.state.isModalVisible} >
+        <ModalContainer isVisible={this.state.isModalVisible}>
           {this.renderModalContent()}
         </ModalContainer>
-        <AddFab navigate={this.props.navigation}/>
+        <AddFab navigate={this.props.navigation} />
       </Container>
     );
   }
 }
 
-export default HomeScreen;
+export default connectAlert(HomeScreen);
