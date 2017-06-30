@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 
 import Root from './config/router';
+import { AlertProvider } from './components/alert';
 
 class App extends Component {
   render() {
-    return <Root />;
+    return (
+      <AlertProvider>
+        <Root />
+      </AlertProvider>
+    );
   }
 }
 

@@ -7,6 +7,7 @@ let RequestService = {
   },
 
   save(requestObj) {
+    console.log('Realm Save:', requestObj);
     realm.write(() => {
       realm.create('Request', requestObj);
     });
@@ -26,11 +27,11 @@ let RequestService = {
 };
 
 // // seed db
-console.log(RequestService.findAll().length);
-if(RequestService.findAll().length <= 3) {
-  RequestService.save(new RequestModel('Demo 1', 'https://facebook.github.io/react-native/movies.json', 'GET', true));
-  RequestService.save(new RequestModel('Demo 2', 'https://facebook.github.io/react-native/movies.json', 'GET', false));
-  RequestService.save(new RequestModel('Demo 3', 'https://facebook.github.io/react-native/movies.json', 'GET', true));
-}
+// console.log(RequestService.findAll().length);
+// if(RequestService.findAll().length <= 3) {
+//   RequestService.save(new RequestModel('Demo 1', 'https://facebook.github.io/react-native/movies.json', 'GET', true));
+//   RequestService.save(new RequestModel('Demo 2', 'https://facebook.github.io/react-native/movies.json', 'GET', false));
+//   RequestService.save(new RequestModel('Demo 3', 'https://facebook.github.io/react-native/movies.json', 'GET', true));
+// }
 
 export default RequestService;
