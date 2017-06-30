@@ -55,7 +55,7 @@ class HomeScreen extends Component {
   }
 
   handleAlert() {
-    this.props.alertWithType('info', 'Hey!', 'Alerting peopleis useful.');
+    this.props.alertWithType('info', 'Hey!', 'Alerting people is useful.');
   }
 
   sendRequest(method, url, showResponse) {
@@ -74,7 +74,11 @@ class HomeScreen extends Component {
       })
       .catch(e => {
         if (e != null) {
-          this.props.alertWithType('error', 'Network Error!', JSON.stringify(e.response.status, null, 2));
+          this.props.alertWithType(
+            'error',
+            'Network Error!',
+            JSON.stringify(e.response.status, null, 2)
+          );
         }
       });
   }
@@ -141,6 +145,7 @@ class HomeScreen extends Component {
       return (
         <Container>
           <Text>No Requests</Text>
+          <AddFab navigate={this.props.navigation} />
         </Container>
       );
     }

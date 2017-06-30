@@ -69,7 +69,7 @@ class NewRequestScreen extends Component {
 
     if (errors.length === 0) {
       console.log('Saving', this.state.request);
-      const {title, url, method, showResponse } = this.state.request;
+      const { title, url, method, showResponse } = this.state.request;
       RequestService.save(new RequestModel(title, url, method, showResponse));
       this.props.navigation.navigate('HomeScreen');
     } else {
@@ -83,7 +83,7 @@ class NewRequestScreen extends Component {
     return (
       <Container form>
         <FormLabel>Title</FormLabel>
-        <FormInput 
+        <FormInput
           value={this.state.request.title}
           onChangeText={title => {
             this.setState({
@@ -94,8 +94,8 @@ class NewRequestScreen extends Component {
 
         <FormLabel>URL</FormLabel>
         <FormInput
-          autoCapitalize='none'
-          autpCorrect='false'
+          autoCapitalize="none"
+          autpCorrect="false"
           value={this.state.request.url}
           onChangeText={url => {
             this.setState({
@@ -153,6 +153,7 @@ class NewRequestScreen extends Component {
             }}
           />
         </View>
+        <View />
         <Button
           large
           iconRight
